@@ -41,10 +41,6 @@ let data = [
     }
 ]
 
-app.get('/', (request, response) => {
-  response.send('<h1>PhoneBook</h1>')
-})
-
 app.get('/info', (request, response) => {
   const now = (new Date()).toString()
   response.send(`<p>Phone book has info for ${data.length} people</p><p>${now}</p>`)
