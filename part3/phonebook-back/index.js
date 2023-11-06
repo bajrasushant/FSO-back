@@ -20,8 +20,7 @@ app.use(reqLogger)
 
 let data = [
     { 
-      "id": 1,
-      "name": "Arto Hellas", 
+      "id": 1, "name": "Arto Hellas", 
       "number": "040-123456"
     },
     { 
@@ -65,7 +64,6 @@ app.get('/api/persons/:id', (request, response) => {
 app.delete('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id)
   const person = data.filter(person => person.id !== id)
-  data = person 
   response.json(person)
 })
 
@@ -75,6 +73,15 @@ const generateId = () => {
   if(!found) return uniqueId
   else return generateId()
 }
+
+app.put('/api/persons/:id', (request, response) => {
+  const id = Number(request.params.id)
+  const body = request.body
+  const person = data.find(person => person.id === id)
+  person.number = body.number
+  response.json(person)
+ }
+)
 
 app.post('/api/persons', (request, response) => {
   const body = request.body
