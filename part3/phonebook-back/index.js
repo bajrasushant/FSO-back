@@ -15,6 +15,7 @@ const reqLogger = morgan(function (tokens, req, res) {
   })
 
 app.use(express.json())
+app.use(express.static('dist'))
 app.use(reqLogger)
 
 let data = [
