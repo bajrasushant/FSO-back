@@ -65,9 +65,8 @@ app.get('/api/persons/:id', (request, response) => {
 app.delete('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id)
   const person = data.filter(person => person.id !== id)
-
-  console.log(person)
-  response.status(204).end()
+  data = person 
+  response.json(person)
 })
 
 const generateId = () => {
@@ -85,7 +84,7 @@ app.post('/api/persons', (request, response) => {
     })
   }
 
-  if(data.some(person => person.name === body.name)) {
+  if(data.some(person => person.name.toLowerCase() === body.name.toLowerCase())) {
     return response.status(400).json({
     error: "Name must be unique"
     })
