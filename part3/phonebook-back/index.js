@@ -78,7 +78,7 @@ const generateId = () => {
 app.put('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id)
   const body = request.body
-  const person = data.find(person => person.id === id)
+  let person = data.find(person => person.id === id)
   person.number = body.number
   response.json(person)
  }
