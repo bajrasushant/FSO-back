@@ -21,7 +21,7 @@ const update = (id, newObject) => {
   const req = axios.put(`${baseUrl}/${id}`, newObject)
   return req.then(res=>res.data)
 }
-
+ 
 const deleteFromPhonebook = id => {
   const req = axios.delete(`${baseUrl}/${id}`)
   return req.then(res => {
